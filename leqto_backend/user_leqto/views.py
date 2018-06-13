@@ -2,17 +2,20 @@ from rest_framework.parsers import JSONParser
 from rest_framework.views import APIView
 from rest_framework import status
 from django.http import JsonResponse
-from .models import UserLeqto
-from .serializers import UserLeqtoSerializer
+from .models import User
+from .serializers import UserSerializer
+
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
 
-class UserLeqtoCreate(APIView):
+class UserCreate(APIView):
 
     def post(self, request):
         data = JSONParser().parse(request)
-        serializer = UserLeqtoSerializer(data=data)
+        serializer = UserSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
@@ -22,25 +25,28 @@ class UserLeqtoCreate(APIView):
 # User Detail (GET, PATCH)
 # /user/{user_id}/
 
-class UserLeqtoDetail(APIView):
+class UserDetail(APIView):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request, user_id):
         try:
-            user = UserLeqto.objects.get(id=user_id)
-        except UserLeqto.DoesNotExist:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
             return JsonResponse({'error': 'User with user_id {' + str(user_id) + '} does not exist'},
                                 status=status.HTTP_404_NOT_FOUND)
-        serializer = UserLeqtoSerializer(user)
+        serializer = UserSerializer(user)
         return JsonResponse(serializer.data, status=status.HTTP_200_OK)
 
     def patch(self, request, user_id):
         try:
-            user = UserLeqto.objects.get(id=user_id)
-        except UserLeqto.DoesNotExist:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
             return JsonResponse({'error': 'User with user_id {' + str(user_id) + '} does not exist'},
                                 status=status.HTTP_404_NOT_FOUND)
-        serializer = UserLeqtoSerializer(user, data=request.data)
+        serializer = UserSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_200_OK)
         return JsonResponse(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+

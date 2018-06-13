@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     'user_leqto.apps.UserLeqtoConfig',
     'lesson.apps.LessonConfig',
     'rest_framework',
+    'django_use_email_as_username.apps.DjangoUseEmailAsUsernameConfig',
+
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,3 +124,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'user_leqto.User'

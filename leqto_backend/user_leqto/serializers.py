@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import UserLeqto
+from .models import User
 
 
-class UserLeqtoSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = UserLeqto
+        model = User
         extra_kwargs = {'password': {'write_only': True}}
         fields = ['id',
                   'password',
@@ -20,7 +20,7 @@ class UserLeqtoSerializer(serializers.ModelSerializer):
                   'payment_info']
 
     def create(self, validated_data):
-        user = UserLeqto.objects.create(**validated_data)
+        user = User.objects.create(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
         return user

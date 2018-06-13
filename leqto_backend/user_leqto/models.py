@@ -1,6 +1,5 @@
 from django.db import models
-from django.contrib.auth.base_user import AbstractBaseUser
-from django.core.validators import EmailValidator
+from django_use_email_as_username.models import BaseUser, BaseUserManager
 
 
 # When model changed run "$> python3 manage.py makemigrations user_leqto"
@@ -10,22 +9,7 @@ from django.core.validators import EmailValidator
 # And finally run "$> python3 manage.py migrate"
 
 
-class UserLeqto(AbstractBaseUser):
-
-    email_validator = EmailValidator()
-
-    email = models.CharField(
-        max_length=256,
-        unique=True,
-        help_text='Required. 256 characters or fewer. Letters, digits and @/./+/-/_ only.',
-        validators=[email_validator],
-        error_messages={
-            'unique': "A user with that email already exists.",
-        },
-    )
-
-    first_name = models.CharField(max_length=40)
-    last_name = models.CharField(max_length=40)
+class User(BaseUser):
 
     # null=True makes the field optional in the database
     # blank=True makes the field optional when adding creating it with admin panel
@@ -37,6 +21,5 @@ class UserLeqto(AbstractBaseUser):
     picture = models.CharField(max_length=256, blank=True, null=True)
     payment_info = models.IntegerField(blank=True, null=True)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    objects = BaseUserManager()
 
