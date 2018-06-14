@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from . import views
-# from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
 
@@ -8,9 +8,9 @@ urlpatterns = [
     url(r'^create/', views.UserCreate.as_view()),
 
     # /user/{user_id}
-    url(r'^(?P<user_id>[0-9]+)/', views.UserDetail.as_view()),
+    url(r'^details/', views.UserDetail.as_view()),
 
     # /user/connect/
-    # url(r'^connect/', obtain_jwt_token),
+    url(r'^connect/', obtain_jwt_token),
 
 ]

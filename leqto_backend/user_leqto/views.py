@@ -5,10 +5,8 @@ from django.http import JsonResponse
 from .models import User
 from .serializers import UserSerializer
 
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
-
-# Create your views here.
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
 class UserCreate(APIView):
@@ -22,16 +20,19 @@ class UserCreate(APIView):
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# User Detail (GET, PATCH)
-# /user/{user_id}/
+# User Details (GET, PATCH)
+# /user/details/
+
+# Need to first /user/connect/ to get the JWT Token
+# Do request with Token
 
 class UserDetail(APIView):
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (JSONWebTokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
-    def get(self, request, user_id):
+    def get(self, request):
         try:
-            user = User.objects.get(id=user_id)
+            user = User.objects.get(id=request.user.id)
         except User.DoesNotExist:
             return JsonResponse({'error': 'User with user_id {' + str(user_id) + '} does not exist'},
                                 status=status.HTTP_404_NOT_FOUND)
