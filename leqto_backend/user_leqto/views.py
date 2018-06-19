@@ -9,6 +9,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
+# User Creation (POST)
+# /user/create/
+
 class UserCreate(APIView):
 
     def post(self, request):
@@ -51,3 +54,11 @@ class UserDetail(APIView):
             return JsonResponse(serializer.data, status=status.HTTP_200_OK)
         return JsonResponse(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
+# TODO : Requests to fill
+
+# Public User Details (GET)
+# /user/public/{id_user}
+
+
+# Public User Search (GET)
+# /user/public/search/{search_text}
