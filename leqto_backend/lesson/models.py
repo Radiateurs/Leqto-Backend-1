@@ -1,12 +1,12 @@
 from django.db import models
-from enum import Enum
-from leqto_backend.user_leqto.models import User
+# from enum import Enum
+from user_leqto.models import User
 
 # When model changed run "$> python3 manage.py makemigrations lesson"
 # Then "$> python3 manage.py sqlmigrate lesson [migration_number]"
 # The migration_number is provided by the makemigrations command
 # As in "lesson/migrations/0001_initial.py" where migration_number = 0001
-# And finally run "$> python3 manager.py migrate"
+# And finally run "$> python3 manage.py migrate"
 
 
 class Country(models.Model):
@@ -43,14 +43,14 @@ class Room(models.Model):
     school_id = models.OneToOneField(School, on_delete=models.CASCADE, null=True)
 
 
-class PaymentType(Enum):
-
-    Cash = 1
-    Paypal = 2
-    CreditCard = 3
-    ApplePay = 4
-    GooglePay = 5
-
+# class PaymentType(Enum):
+#
+#     Cash = 1
+#     Paypal = 2
+#     CreditCard = 3
+#     ApplePay = 4
+#     GooglePay = 5
+#
 
 class Lesson(models.Model):
 
@@ -62,7 +62,7 @@ class Lesson(models.Model):
     date_time = models.DateTimeField()
     room_id = models.OneToOneField(Room, on_delete=models.CASCADE)
 
-    payment_type = models.IntegerField(choices=PaymentType, default=PaymentType.Cash)
+    # payment_type = models.IntegerField(choices=PaymentType, default=PaymentType.Cash)
     tag = models.CharField(max_length=256, blank=True, null=True)
 
 
