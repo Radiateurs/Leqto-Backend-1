@@ -20,4 +20,3 @@ class LessonSerializer(serializers.ModelSerializer):
         read_only_fields = ['user_id']
 
         payment_type = EnumChoiceField(enum_class=PaymentType)
-

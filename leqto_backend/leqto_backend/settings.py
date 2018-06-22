@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'lesson.apps.LessonConfig',
+    'location.apps.LocationConfig',
     'user_leqto.apps.UserLeqtoConfig',
     'rest_framework',
     'django_use_email_as_username.apps.DjangoUseEmailAsUsernameConfig',
