@@ -19,6 +19,9 @@ class UserSerializer(serializers.ModelSerializer):
                   'picture',
                   'payment_info']
 
+    first_name = serializers.CharField(max_length=30, required=True)
+    last_name = serializers.CharField(max_length=150, required=True)
+
     def create(self, validated_data):
         user = User.objects.create(**validated_data)
         user.set_password(validated_data['password'])

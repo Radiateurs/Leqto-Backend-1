@@ -42,9 +42,9 @@ class UserDetail(APIView):
         serializer = UserSerializer(user)
         return JsonResponse(serializer.data, status=status.HTTP_200_OK)
 
-    def patch(self, request, user_id):
+    def patch(self, request):
         try:
-            user = User.objects.get(id=user_id)
+            user = User.objects.get(id=request.user.id)
         except User.DoesNotExist:
             return JsonResponse({'error': 'User with user_id {' + str(user_id) + '} does not exist'},
                                 status=status.HTTP_404_NOT_FOUND)

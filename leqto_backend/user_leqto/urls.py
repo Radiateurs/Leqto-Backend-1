@@ -7,7 +7,7 @@ urlpatterns = [
     # /user/create/
     url(r'^create/', views.UserCreate.as_view()),
 
-    # /user/{user_id}
+    # /user/details/
     url(r'^details/', views.UserDetail.as_view()),
 
     # /user/connect/
