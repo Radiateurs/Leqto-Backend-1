@@ -6,4 +6,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^user/', include('user_leqto.urls')),
     url(r'^lesson/', include('lesson.urls')),
+    url(r'^location/', include('location.urls')),
 ]

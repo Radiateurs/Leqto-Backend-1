@@ -8,13 +8,19 @@ from django.db import models
 
 
 class Country(models.Model):
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=40, unique=True)
+
+    def __str__(self):
+        return str(self.name)
 
 
 class City(models.Model):
 
     name = models.CharField(max_length=40)
-    country = models.OneToOneField(Country, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.name)
 
 
 class Location(models.Model):
@@ -23,6 +29,6 @@ class Location(models.Model):
     latitude = models.FloatField()
 
     street = models.CharField(max_length=256)
-    city = models.OneToOneField(City, on_delete=models.CASCADE)
-    country = models.OneToOneField(Country, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
     zip_code = models.CharField(max_length=10, null=True, blank=True)
