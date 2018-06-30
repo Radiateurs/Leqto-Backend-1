@@ -1,319 +1,338 @@
 {
 	"info": {
-		"_postman_id": "e464ae65-2088-4317-8f12-6fc4ec5e7e71",
+		"_postman_id": "f9cc6e47-5d22-4857-8f32-f468b5d06296",
 		"name": "Leqto",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://127.0.0.1:8000/user/create/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"first_name\": \"Abdelhalim\",\n\t\"last_name\": \"Chekroun\",\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"Hello\"\n}"
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/user/create/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"user",
-						"create",
-						""
-					]
-				},
-				"description": "user create"
-			},
-			"response": []
-		},
-		{
-			"name": "http://127.0.0.1:8000/user/connect/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"Hello\"\n}\n"
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/user/connect/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"user",
-						"connect",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://127.0.0.1:8000/user/details/",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "http://127.0.0.1:8000/user/details/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"user",
-						"details",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://127.0.0.1:8000/user/details/",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\": \"Abdelhalim\",\n\t\"last_name\": \"Chekroun\",\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"Hello\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/user/create/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"create",
+								""
+							]
+						},
+						"description": "user create"
 					},
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"date_of_birth\": \"1996-07-12\"\n}"
+					"response": []
 				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/user/details/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"user",
-						"details",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://127.0.0.1:8000/location/create/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NzI2NDI3LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.aVE0oO6XhcnuGDY3J3Sk_ltb0_96SqT_pOuO-qpEIv4"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"longitude\" : 2.10,\n\t\"latitude\" : 2.2,\n\t\"street\" : \"6 rue de Condé\",\n\t\"zip_code\": \"60160\",\n\t\"city\": \"Montataire\",\n\t\"country\": \"France\"\n}"
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/location/create/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"location",
-						"create",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://127.0.0.1:8000/location/{location_id}/",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTMwMzU2MTM0LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.isBAMWza_KjiMXdWQejntM_XhNC_SOQsm3dQWdgMM0A",
-							"type": "string"
+				{
+					"name": "Log in",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"Hello\"\n}\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/user/connect/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"connect",
+								""
+							]
 						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://127.0.0.1:8000/location/1/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"location",
-						"1",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://127.0.0.1:8000/lesson/create/",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
 					},
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"title\": \"Victor Hugo le Salop\",\n\t\"sub_title\": \"Ehhh oui Victor\",\n\t\"description\": \"Le titre veut tout dire, non ?\",\n\t\"module\": \"Français\",\n\t\"date_time\": \"2018-06-22T14:30\"\n}"
+					"response": []
 				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/lesson/create/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"lesson",
-						"create",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://127.0.0.1:8000/lesson/{lesson_id}/",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "http://127.0.0.1:8000/lesson/9/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"lesson",
-						"9",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://127.0.0.1:8000/lesson/{lesson_id}/",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
+				{
+					"name": "Get details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/user/details/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"details",
+								""
+							]
+						}
 					},
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"user_id\": 3\n}"
+					"response": []
 				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/lesson/9/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"lesson",
-						"9",
-						""
-					]
+				{
+					"name": "Update details",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"date_of_birth\": \"1996-07-12\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/user/details/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"details",
+								""
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Location",
+			"description": "",
+			"item": [
+				{
+					"name": "Create location",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NzI2NDI3LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.aVE0oO6XhcnuGDY3J3Sk_ltb0_96SqT_pOuO-qpEIv4"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"longitude\" : 2.10,\n\t\"latitude\" : 2.2,\n\t\"street\" : \"6 rue de Condé\",\n\t\"zip_code\": \"60160\",\n\t\"city\": \"Montataire\",\n\t\"country\": \"France\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/location/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"location",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get id location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTMwMzU2MTM0LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.isBAMWza_KjiMXdWQejntM_XhNC_SOQsm3dQWdgMM0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/location/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"location",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lesson",
+			"description": "",
+			"item": [
+				{
+					"name": "Create lesson",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Victor Hugo le Salop\",\n\t\"sub_title\": \"Ehhh oui Victor\",\n\t\"description\": \"Le titre veut tout dire, non ?\",\n\t\"module\": \"Français\",\n\t\"date_time\": \"2018-06-22T14:30\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/lesson/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"lesson",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get id lesson",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://127.0.0.1:8000/lesson/9/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"lesson",
+								"9",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update id lesson",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": 3\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/lesson/9/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"lesson",
+								"9",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
