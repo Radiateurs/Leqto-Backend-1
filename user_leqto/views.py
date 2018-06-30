@@ -4,6 +4,8 @@ from rest_framework import status
 from django.http import JsonResponse
 from .models import User
 from .serializers import UserSerializer
+import json
+from django.db.models import Q
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
@@ -68,7 +70,26 @@ class UserDetail(APIView):
             return JsonResponse(serializer.data, status=status.HTTP_200_OK)
         return JsonResponse(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
-# TODO : Requests to fill
+class UserSearch(APIView):
+    authentication_classes = (JSONWebTokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
-# Public User Search (GET)
-# /user/public/search/{search_text}
+    def get(self, request):
+        query = request.GET.get('query', None)
+        if query is None:
+            return JsonResponse({'error': 'No query found'}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            user_firstname = list(User.objects.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(email__icontains=query)))
+        except User.DoesNotExist:
+            return JsonResponse({'error': 'User with user_id {' + str(user_id) + '} does not exist'},
+                                status=status.HTTP_404_NOT_FOUND)
+        response = json.loads('[]')
+        for value in user_firstname:
+            serializer_f = UserSerializer(value, data=request.data, partial=True)
+            if serializer_f.is_valid():
+                serializer_f.save()
+                response.append(json.loads(json.dumps(serializer_f.data)))
+        print(json.dumps(response))
+        if len(response) > 0:
+            return JsonResponse(response, status=status.HTTP_200_OK, safe=False)
+        return JsonResponse({'error': 'test'}, status=status.HTTP_404_NOT_FOUND)
