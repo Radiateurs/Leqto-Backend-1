@@ -10,7 +10,8 @@ urlpatterns = [
     # /user/details/
     url(r'^details/', views.UserDetail.as_view()),
 
-    # url(r'^search/', views.UserSearch.as_view()),
+    # /user/search/
+    url(r'^search/', views.UserSearch.as_view()),
 
 
     # TODO: Update Token
