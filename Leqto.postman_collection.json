@@ -21,7 +21,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"first_name\": \"Abdelhalim\",\n\t\"last_name\": \"Chekroun\",\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"Hello\"\n}"
+							"raw": "{\n\t\"first_name\": \"PM\",\n\t\"last_name\": \"Danieau\",\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"mdp\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/user/create/",
@@ -50,18 +50,13 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"Hello\"\n}\n"
+							"raw": "{\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"mdp\"\n}\n"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/connect/",
-							"protocol": "http",
+							"raw": "{{url}}/user/connect/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
 								"connect",
@@ -78,7 +73,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
@@ -86,15 +81,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/details/",
-							"protocol": "http",
+							"raw": "{{url}}/user/details/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
 								"details",
@@ -115,7 +105,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
@@ -123,15 +113,10 @@
 							"raw": "{\n    \"date_of_birth\": \"1996-07-12\"\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/details/",
-							"protocol": "http",
+							"raw": "{{url}}/user/details/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
 								"details",
@@ -153,12 +138,12 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NzI2NDI3LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.aVE0oO6XhcnuGDY3J3Sk_ltb0_96SqT_pOuO-qpEIv4"
-							},
-							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
@@ -166,15 +151,10 @@
 							"raw": "{\n\t\"longitude\" : 2.10,\n\t\"latitude\" : 2.2,\n\t\"street\" : \"6 rue de Condé\",\n\t\"zip_code\": \"60160\",\n\t\"city\": \"Montataire\",\n\t\"country\": \"France\"\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/location/create/",
-							"protocol": "http",
+							"raw": "{{url}}/location/create/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"location",
 								"create",
@@ -204,15 +184,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/location/1/",
-							"protocol": "http",
+							"raw": "{{url}}/location/1/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"location",
 								"1",
@@ -239,7 +214,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
@@ -247,15 +222,10 @@
 							"raw": "{\n\t\"title\": \"Victor Hugo le Salop\",\n\t\"sub_title\": \"Ehhh oui Victor\",\n\t\"description\": \"Le titre veut tout dire, non ?\",\n\t\"module\": \"Français\",\n\t\"date_time\": \"2018-06-22T14:30\"\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/lesson/create/",
-							"protocol": "http",
+							"raw": "{{url}}/lesson/create/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"lesson",
 								"create",
@@ -272,20 +242,15 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "http://127.0.0.1:8000/lesson/9/",
-							"protocol": "http",
+							"raw": "{{url}}/lesson/9/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"lesson",
 								"9",
@@ -306,7 +271,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTI5NjMyMjk5LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.83ODegwu9hf453kHmgx9pdKVijDQ_aZE0Vv5mO43dX8"
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
@@ -314,15 +279,10 @@
 							"raw": "{\n  \"user_id\": 3\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/lesson/9/",
-							"protocol": "http",
+							"raw": "{{url}}/lesson/9/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{url}}"
 							],
-							"port": "8000",
 							"path": [
 								"lesson",
 								"9",
