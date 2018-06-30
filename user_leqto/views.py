@@ -25,7 +25,12 @@ class UserCreate(APIView):
 
 # User Details (GET, PATCH)
 # /user/details/
+# or /user/details/?user={id_user}
 
+# With param retrieve User information from its id.
+# No need of token first
+
+# Without param
 # Need to first /user/connect/ to get the JWT Token
 # Do request with Token
 
@@ -34,8 +39,16 @@ class UserDetail(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
+        userRequest = request.GET.get('user', None) # Either get the value of user or None if user doesn't exists
+        query = None
+
+        # get the id to look for
+        if userRequest is not None:
+            query = userRequest
+        else:
+            query = request.user.id
         try:
-            user = User.objects.get(id=request.user.id)
+            user = User.objects.get(id=query)
         except User.DoesNotExist:
             return JsonResponse({'error': 'User with user_id {' + str(user_id) + '} does not exist'},
                                 status=status.HTTP_404_NOT_FOUND)
@@ -55,6 +68,8 @@ class UserDetail(APIView):
         return JsonResponse(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
 # TODO : Requests to fill
+
+
 
 # Public User Details (GET)
 # /user/public/{id_user}
