@@ -41,16 +41,17 @@ class UserDetail(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        userRequest = request.GET.get('user', None) # Either get the value of user or None if user doesn't exists
-        query = None
+        user_request = request.GET.get('user', None)
 
         # get the id to look for
-        if userRequest is not None:
-            query = userRequest
+        if user_request is not None:
+            user_id = user_request
         else:
-            query = request.user.id
+            user_id = request.user.id
+
+        # get user object
         try:
-            user = User.objects.get(id=query)
+            user = User.objects.get(id=user_id)
         except User.DoesNotExist:
             return JsonResponse({'error': 'User with user_id {' + str(user_id) + '} does not exist'},
                                 status=status.HTTP_404_NOT_FOUND)
