@@ -46,7 +46,7 @@ class UserDetail(APIView):
         try:
             user = User.objects.get(id=request.user.id)
         except User.DoesNotExist:
-            return JsonResponse({'error': 'User with user_id {' + str(user_id) + '} does not exist'},
+            return JsonResponse({'error': 'User with user_id {' + str(request.user.id) + '} does not exist'},
                                 status=status.HTTP_404_NOT_FOUND)
         serializer = UserSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():

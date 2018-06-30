@@ -41,3 +41,15 @@ class LocationDetail(APIView):
                                 status=status.HTTP_404_NOT_FOUND)
         serializer = LocationSerializer(location)
         return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+
+    def patch(self, request, location_id):
+        try:
+            user = Location.objects.get(id=location_id)
+        except Location.DoesNotExist:
+            return JsonResponse({'error': 'Location with location_id {' + str(location_id) + '} does not exist'},
+                                status=status.HTTP_404_NOT_FOUND)
+        serializer = LocationSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+        return JsonResponse(serializer.errors, status=status.HTTP_404_NOT_FOUND)
