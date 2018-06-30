@@ -8,6 +8,7 @@ from django.db import models
 
 
 class Country(models.Model):
+
     name = models.CharField(max_length=40, unique=True)
 
     def __str__(self):
@@ -23,6 +24,16 @@ class City(models.Model):
         return str(self.name)
 
 
+class ZipCode(models.Model):
+
+    zip_code = models.CharField(max_length=10, null=True, blank=True)
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.zip_code)
+
+
 class Location(models.Model):
 
     longitude = models.FloatField()
@@ -31,4 +42,4 @@ class Location(models.Model):
     street = models.CharField(max_length=256)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    zip_code = models.CharField(max_length=10, null=True, blank=True)
+    zip_code = models.ForeignKey(ZipCode, on_delete=models.CASCADE)
