@@ -9,6 +9,7 @@ urlpatterns = [
 
     # /user/details/
     url(r'^details/', views.UserDetail.as_view()),
+    url(r'^details/(?P<user>\w{0,50})/$', views.UserDetail.as_view()),
 
 
     # TODO: Update Token
