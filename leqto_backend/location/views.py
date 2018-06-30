@@ -23,3 +23,21 @@ class LocationCreate(APIView):
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# Location Details (GET, PATCH)
+# /location/{location_id}/
+
+class LocationDetail(APIView):
+
+    authentication_classes = (JSONWebTokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, location_id):
+        try:
+            location = Location.objects.get(id=location_id)
+        except Location.DoesNotExist:
+            return JsonResponse({'error': 'Location with location_id {' + str(location_id) + '} does not exist'},
+                                status=status.HTTP_404_NOT_FOUND)
+        serializer = LocationSerializer(location)
+        return JsonResponse(serializer.data, status=status.HTTP_200_OK)
