@@ -21,7 +21,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"first_name\": \"PM\",\n\t\"last_name\": \"Danieau\",\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"mdp\"\n}"
+							"raw": "{\n\t\"first_name\": \"Abdel\",\n\t\"last_name\": \"Checkroun\",\n\t\"email\": \"LOLMDR@hotmaiL.fr\",\n\t\"password\": \"mdp\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/user/create/",
@@ -123,6 +123,32 @@
 								""
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get other user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/user/details/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"details",
+								""
+							]
+						},
+						"description": "Get infornation of id user"
 					},
 					"response": []
 				}
