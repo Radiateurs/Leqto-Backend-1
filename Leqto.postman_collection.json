@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "f9cc6e47-5d22-4857-8f32-f468b5d06296",
+		"_postman_id": "1cd221ba-2f66-4be4-8f04-372251f70e6a",
 		"name": "Leqto",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "User",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Create User",
@@ -21,7 +21,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"first_name\": \"Abdel\",\n\t\"last_name\": \"Checkroun\",\n\t\"email\": \"LOLMDR@hotmaiL.fr\",\n\t\"password\": \"mdp\"\n}"
+							"raw": "{\n\t\"first_name\": \"PM\",\n\t\"last_name\": \"Danieau\",\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"mdp\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/user/create/",
@@ -50,7 +50,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"mdp\"\n}\n"
+							"raw": "{\n\t\"email\": \"LOL@hotmaiL.fr\",\n\t\"password\": \"Hello\"\n}\n"
 						},
 						"url": {
 							"raw": "{{url}}/user/connect/",
@@ -67,7 +67,7 @@
 					"response": []
 				},
 				{
-					"name": "Get details",
+					"name": "Get connected user details",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -95,7 +95,7 @@
 					"response": []
 				},
 				{
-					"name": "Update details",
+					"name": "Update connected user details",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -127,7 +127,7 @@
 					"response": []
 				},
 				{
-					"name": "Get other user",
+					"name": "Get other user details",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -136,9 +136,12 @@
 								"value": "Bearer {{token}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "{{url}}/user/details/",
+							"raw": "{{url}}/user/details/?user=1",
 							"host": [
 								"{{url}}"
 							],
@@ -146,9 +149,41 @@
 								"user",
 								"details",
 								""
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "1"
+								}
 							]
 						},
 						"description": "Get infornation of id user"
+					},
+					"response": []
+				},
+				{
+					"name": "Search User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/user/search/?query=LOL",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "LOL"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -156,7 +191,7 @@
 		},
 		{
 			"name": "Location",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Create location",
@@ -191,23 +226,53 @@
 					"response": []
 				},
 				{
-					"name": "Get id location",
+					"name": "Get location with ID",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkxPTEBob3RtYWlMLmZyIiwiZXhwIjoxNTMwMzU2MTM0LCJlbWFpbCI6IkxPTEBob3RtYWlMLmZyIn0.isBAMWza_KjiMXdWQejntM_XhNC_SOQsm3dQWdgMM0A",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/location/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"location",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update location",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"longitude\": 3,\n    \"latitude\": 3,\n    \"street\": \"6 rue de Condé\",\n    \"city\": 1,\n    \"country\": 1,\n    \"zip_code\": 1\n}"
 						},
 						"url": {
 							"raw": "{{url}}/location/1/",
@@ -227,7 +292,7 @@
 		},
 		{
 			"name": "Lesson",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Create lesson",
@@ -262,7 +327,7 @@
 					"response": []
 				},
 				{
-					"name": "Get id lesson",
+					"name": "Get lesson with ID",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -271,7 +336,10 @@
 								"value": "Bearer {{token}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{url}}/lesson/9/",
 							"host": [
@@ -287,7 +355,7 @@
 					"response": []
 				},
 				{
-					"name": "Update id lesson",
+					"name": "Update lesson",
 					"request": {
 						"method": "PATCH",
 						"header": [

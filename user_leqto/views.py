@@ -70,26 +70,23 @@ class UserDetail(APIView):
             return JsonResponse(serializer.data, status=status.HTTP_200_OK)
         return JsonResponse(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
+
 class UserSearch(APIView):
-    authentication_classes = (JSONWebTokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         query = request.GET.get('query', None)
         if query is None:
             return JsonResponse({'error': 'No query found'}, status=status.HTTP_400_BAD_REQUEST)
-        try:
-            user_firstname = list(User.objects.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(email__icontains=query)))
-        except User.DoesNotExist:
-            return JsonResponse({'error': 'User with user_id {' + str(user_id) + '} does not exist'},
-                                status=status.HTTP_404_NOT_FOUND)
+
+        user_first_name = list(User.objects.filter(Q(first_name__icontains=query) |
+                                                   Q(last_name__icontains=query) |
+                                                   Q(email__icontains=query)))
+
         response = json.loads('[]')
-        for value in user_firstname:
+        for value in user_first_name:
             serializer_f = UserSerializer(value, data=request.data, partial=True)
             if serializer_f.is_valid():
                 serializer_f.save()
                 response.append(json.loads(json.dumps(serializer_f.data)))
-        print(json.dumps(response))
-        if len(response) > 0:
-            return JsonResponse(response, status=status.HTTP_200_OK, safe=False)
-        return JsonResponse({'error': 'test'}, status=status.HTTP_404_NOT_FOUND)
+
+        return JsonResponse(response, status=status.HTTP_200_OK, safe=False)
